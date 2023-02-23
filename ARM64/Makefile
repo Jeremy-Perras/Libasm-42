@@ -1,9 +1,7 @@
-
 NAME = Arm64
 
 AS = as
 LD = ld
-
 
 SRCS = HelloWorld.s
 

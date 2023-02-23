@@ -1,12 +1,8 @@
-
 NAME = x86_64
 NAME_LIB = libasm.a
 
 NASM = nasm
 CC = gcc
-
-
-
 
 NASMFLAGS = -f macho64 -g -F dwarf 
 CFLAGS = -Wall -Wextra -Werror
