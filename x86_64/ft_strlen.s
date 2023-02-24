@@ -7,14 +7,14 @@ _ft_strlen:
 
 _strlen_next:
 
-  cmp   [rdi], byte 0  ; null byte yet? [rdi] - \0 = 0 ?
-  jz    exit           ; yes, get out
+  cmp   BYTE[rdi], BYTE 0  ; null byte yet? [rdi] - ' \0' = 0 ?
+  jz   _exit           ; yes, get out
 
   inc   rcx            ; char is ok, count it
   inc   rdi            ; move to next char
   jmp   _strlen_next   ; process again
 
-exit:
+_exit:
 
   mov   rax, rcx       ; rcx = the length (put in rax)
 
