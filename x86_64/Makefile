@@ -5,12 +5,12 @@ NASM = nasm
 CC = gcc
 
 NASMFLAGS = -f macho64 -g -F dwarf 
-CFLAGS = -Wall -Wextra -Werror -g
+CFLAGS = -Wall -Wextra -Werror -g 
 
 MKDIR = mkdir -p
 OUT_DIR := out
 
-SRCS = ft_strlen.s ft_strcpy.s ft_strcmp.s
+SRCS = ft_strlen.s ft_strcpy.s ft_strcmp.s ft_write.s ft_read.s
 OBJS = $(addprefix $(OUT_DIR)/,$(SRCS:%.s=%.o))
 
 $(OUT_DIR)/%.o: %.s

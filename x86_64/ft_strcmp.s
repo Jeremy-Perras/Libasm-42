@@ -1,18 +1,28 @@
-global _ft_strcmp
+bits 64 ; using bl register create buffer overflow
 
-_ft_strcmp:
-    xor rax,rax
+section .text
+    global _ft_strcmp
 
-_strcmp_next:
-    mov al, BYTE[rsi + rax]
-    mov bl, BYTE[rdi + rax] 
-    cmp al,bl
-    jnz _exit
-    inc rax
-    jmp _strcmp_next
+    _ft_strcmp:	
+	    xor		rax, rax
+        xor     rcx, rcx
+        xor     rdx, rdx
 
-_exit:
-    movzx rax, al
-    movzx  cl,bl
-	sub	  rax, r8
-	ret
+    _strcmp_next:
+        cmp  BYTE[rdi + rdx], 0
+        jz  _exit
+        cmp  BYTE[rsi + rdx], 0
+        jz  _exit
+        mov cl, BYTE[rsi + rdx]	
+        cmp BYTE[rdi + rdx]	, cl
+        jnz _exit
+        inc rdx
+        jmp _strcmp_next
+
+    _exit:
+       
+        movzx rax, BYTE[rdi + rdx]
+        movzx rdx, BYTE[rsi + rdx]	
+        sub   rax, rdx
+        ret
+

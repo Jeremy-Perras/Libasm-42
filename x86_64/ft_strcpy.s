@@ -1,17 +1,20 @@
-global      _ft_strcpy
+bits 64
 
-_ft_strcpy:
-            mov rax, 0
+section .text
+    global  _ft_strcpy
 
-_strcpy_next:
+        _ft_strcpy:
+            xor rax, rax
+
+        _strcpy_next:
             cmp BYTE[rsi + rax], 0
-            jz _exit
+            je _exit
             mov cl, BYTE[rsi + rax]
             mov BYTE[rdi + rax], cl
             inc rax
             jmp _strcpy_next
 
-_exit:
+        _exit:
             mov BYTE[rdi + rax], 0
             mov rax, rdi
             ret
