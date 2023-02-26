@@ -1,6 +1,7 @@
 bits 64
 %define MACH_SYSCALL(nb) 0x2000000| nb
 %define READ 3
+extern	___error
 
 section .text
     global _ft_read
@@ -11,5 +12,10 @@ section .text
         ret	
 
     error_exit:
-        mov rax, -1,
+        mov    r15, rax		
+        push	r15
+        call	___error		
+        pop	r15
+        mov	[rax], r15		
+        mov	rax, -1
         ret

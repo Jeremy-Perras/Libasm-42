@@ -13,7 +13,7 @@ section .text
             mov BYTE[rdi + rax], cl
             inc rax
             jmp _strcpy_next
-
+            
         _exit:
             mov BYTE[rdi + rax], 0
             mov rax, rdi

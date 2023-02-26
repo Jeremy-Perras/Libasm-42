@@ -10,7 +10,7 @@ CFLAGS = -Wall -Wextra -fsanitize=address -Werror -g
 MKDIR = mkdir -p
 OUT_DIR := out
 
-SRCS = ft_strlen.s ft_strcpy.s ft_strcmp.s ft_write.s ft_read.s
+SRCS = ft_strlen.s ft_strcpy.s ft_strcmp.s ft_write.s ft_read.s ft_strdup.s
 OBJS = $(addprefix $(OUT_DIR)/,$(SRCS:%.s=%.o))
 
 $(OUT_DIR)/%.o: %.s

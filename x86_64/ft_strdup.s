@@ -1,7 +1,34 @@
 bits 64
+extern _malloc
+extern _ft_strlen
+extern _ft_strcpy
+extern	___error
+
 section .text
     global _ft_strdup
+    
+   _ft_strdup:
+        call	_ft_strlen		
+        push	rdi		
+        inc	rax		
+        mov	rdi, rax
+        call	_malloc
+        cmp	rax, 0
+        je	_error_exit	
+        pop		rsi
+        call	_ft_strcpy	
+        ret			
 
-    _ft_strdup:
+    _error_exit:
+        mov    r15, rax		
+        push	r15
+        call	___error		
+        pop	r15
+        mov	[rax], r15		
+        mov	rax, -1
+        ret
 
-    _strdup_next:
+
+
+
+
