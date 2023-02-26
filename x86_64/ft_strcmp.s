@@ -7,6 +7,7 @@ section .text
 	    xor		rax, rax
         xor     rcx, rcx
         xor     rdx, rdx
+        
 
     _strcmp_next:
         cmp  BYTE[rdi + rdx], 0

@@ -6,6 +6,7 @@ section .text
     _ft_strlen:
       push  rcx            ; save and clear out counter
       xor rcx , rcx         ; put 0 inside rcx
+      ; xor bl, bl
 
     _strlen_next:
       cmp   BYTE[rdi], BYTE 0  ; null byte yet? [rdi] - ' \0' = 0 ?
