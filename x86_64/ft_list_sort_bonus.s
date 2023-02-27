@@ -10,13 +10,13 @@ section .text
         push r15
     
         mov r12, [rdi]; r12 = tmp
-        cmp r12, 0
+        cmp qword[r12], 0
         je _return
     
         mov r14, [r12 +8] ; tmp->next (tmp2)
 
-        mov r13,[rsi]; function cmp
-        cmp r13, 0
+        mov r13,rsi; function cmp
+        cmp qword[r13], 0
         je _return
 
     _loop1:
@@ -48,8 +48,11 @@ section .text
 
     _cmp:
         mov r15, [r12]
-        mov r12, [r14]
-        mov r14, r15
+        mov [r12], r14
+        mov [r14], r15
+        mov r14, [r14 + 8]
+        cmp r14, 0
+        je _inc_loop1
         jmp _loop2
 
     _return:
