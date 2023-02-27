@@ -8,13 +8,13 @@ section .text
 
         _strcpy_next:
             cmp BYTE[rsi + rax], 0
-            je _exit
+            je _return
             mov cl, BYTE[rsi + rax]
             mov BYTE[rdi + rax], cl
             inc rax
             jmp _strcpy_next
             
-        _exit:
+        _return:
             mov BYTE[rdi + rax], 0
             mov rax, rdi
             ret

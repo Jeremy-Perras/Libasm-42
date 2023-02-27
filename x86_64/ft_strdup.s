@@ -14,12 +14,12 @@ section .text
         mov	rdi, rax
         call	_malloc
         cmp	rax, 0
-        je	_error_exit	
+        je	_error_return	
         pop		rsi
         call	_ft_strcpy	
         ret			
 
-    _error_exit:
+    _error_return:
         ret
 
 

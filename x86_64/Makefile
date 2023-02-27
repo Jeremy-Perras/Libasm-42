@@ -13,7 +13,7 @@ OUT_DIR := out
 SRCS = ft_strlen.s ft_strcpy.s ft_strcmp.s ft_write.s ft_read.s ft_strdup.s
 OBJS = $(addprefix $(OUT_DIR)/,$(SRCS:%.s=%.o))
 
-BONUS_SRCS	= ft_list_push_front_bonus.s
+BONUS_SRCS	= ft_list_push_front_bonus.s ft_list_size_bonus.s ft_list_sort_bonus.s
 
 BONUS_OBJS	=	$(addprefix $(OUT_DIR)/,$(BONUS_SRCS:%.s=%.o))
 

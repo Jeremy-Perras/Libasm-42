@@ -9,10 +9,10 @@ section .text
        _ft_write:
            mov rax, MACH_SYSCALL(WRITE)
            syscall
-           jc	error_exit
+           jc	error_return
            ret	
 
-       error_exit:
+       error_return:
             mov    r15, rax		
             push	r15
             call	___error		

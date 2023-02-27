@@ -11,16 +11,16 @@ section .text
 
     _strcmp_next:
         cmp  BYTE[rdi + rdx], 0
-        jz  _exit
+        jz  _return
         cmp  BYTE[rsi + rdx], 0
-        jz  _exit
+        jz  _return
         mov cl, BYTE[rsi + rdx]	
         cmp BYTE[rdi + rdx]	, cl
-        jnz _exit
+        jnz _return
         inc rdx
         jmp _strcmp_next
 
-    _exit:
+    _return:
        
         movzx rax, BYTE[rdi + rdx]
         movzx rdx, BYTE[rsi + rdx]	

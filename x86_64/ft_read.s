@@ -8,10 +8,10 @@ section .text
     _ft_read:
         mov rax, MACH_SYSCALL(READ)
         syscall
-        jc	error_exit
+        jc	error_return
         ret	
 
-    error_exit:
+    error_return:
         mov    r15, rax		
         push	r15
         call	___error		
