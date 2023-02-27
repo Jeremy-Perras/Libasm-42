@@ -13,6 +13,10 @@ OUT_DIR := out
 SRCS = ft_strlen.s ft_strcpy.s ft_strcmp.s ft_write.s ft_read.s ft_strdup.s
 OBJS = $(addprefix $(OUT_DIR)/,$(SRCS:%.s=%.o))
 
+BONUS_SRCS	= ft_list_push_front_bonus.s
+
+BONUS_OBJS	=	$(addprefix $(OUT_DIR)/,$(BONUS_SRCS:%.s=%.o))
+
 $(OUT_DIR)/%.o: %.s
 	$(MKDIR) $(@D)
 	$(NASM) $(NASMFLAGS) $< -o $@
@@ -26,6 +30,8 @@ ccproject :
 ccprojectM1 :
 	arch -x86_64 $(CC) $(CFLAGS) main.c $(NAME_LIB) -o $(NAME)
 
+bonus:	$(OBJS) $(BONUS_OBJS)
+	ar rcs $(NAME_LIB) $(OBJS) $(BONUS_OBJS)
 
 all : $(NAME)
 

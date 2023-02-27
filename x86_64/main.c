@@ -10,22 +10,19 @@ char *ft_strcpy(char *, char *);
 int ft_strcmp(char *, char *);
 ssize_t ft_write(int fildes, const void *buf, size_t nbyte);
 char *ft_strdup(const char *s1);
+typedef struct s_list {
+  void *data;
+  struct s_list *next;
+} t_list;
+
+void ft_list_push_front(t_list **begin_list, void *data);
+
 int main() {
-  char *s = "Hello wolrd";
-  // char t[40];
-  // char *s;
-  char *t;
-  char *q;
-  // printf("%d\n", ft_strlen("Hello word"));
-  // printf("%s\n", ft_strcpy(t, s));
-  // printf("%d\n", ft_strcmp("Tripouille", "TripouillE"));
-  // printf("\n%zd\n", ft_write(1, s, 11));
-  // // return 0;
-  // printf("Write return: %zd\n", ft_write(21, "wrong file descriptor",
-  // 21)); printf("Error code: %d\n", errno);
-  q = ft_strdup(s);
-  t = strdup(s);
-  printf("false one : %s\n", q);
-  printf(" true one : %s\n", t);
+  t_list *test = NULL;
+  int i = 10;
+  ft_list_push_front(&test, &i);
+  int *c = (int *)(test->data);
+  printf("%d\n", *c);
+  printf("%lu\n", sizeof(void *));
   return (1);
 }

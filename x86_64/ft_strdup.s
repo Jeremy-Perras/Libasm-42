@@ -20,12 +20,6 @@ section .text
         ret			
 
     _error_exit:
-        mov    r15, rax		
-        push	r15
-        call	___error		
-        pop	r15
-        mov	[rax], r15		
-        mov	rax, -1
         ret
 
 
