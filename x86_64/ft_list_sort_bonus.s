@@ -4,54 +4,60 @@ extern _ft_list_size
 section .text
     global  _ft_list_sort ; rdi = **begin_list, rsi (*cmp)()
     _ft_list_sort:
-            push	rbx					
-			push	r15  ; *begin_list 
-            push    r12  ; tmp3
-            push    r13  ; Fonction
-            push    r11  ; begin_list->next
-            mov     r13, rsi	
-			cmp		rdi, 0				
-			jz		_return
-			mov		r15, [rdi]			
-			cmp		rsi, 0
-			jz		_return
-			jmp		_ft_list_sort_next
+        push r12
+        push r13
+        push r14    
+        push r15
+    
+        mov r12, [rdi]; r12 = tmp
+        cmp r12, 0
+        je _return
+    
+        mov r14, [r12 +8] ; tmp->next (tmp2)
 
-    _ft_list_sort_next:
-        jmp _loop1
+        mov r13,[rsi]; function cmp
+        cmp r13, 0
+        je _return
 
     _loop1:
-        cmp r15, 0
+        cmp r12,0
         je _return
-        mov r11, [r15 + 8]
-        cmp r11, 0
-        je _return
+        mov r14, [r12 + 8] ; tmp2
         jmp _loop2
-        mov r15, [r15 + 8]
-
-        
+    
     _loop2:
-        mov rdi, r15
-        mov rsi, r11
+        push rdi
+        push rsi
+        mov rdi, [r12]; tmp->data
+        mov rsi, [r14]; tmp->next->data
         call r13
+        pop rdi
+        pop rsi
         cmp rax, 0
-        jg _if_greater
-        mov r11, [r15 + 8]
-        cmp r11, 0
-        je _loop1
+        jg _cmp
+        mov r14, [r14 + 8]
+        cmp r14, 0
+        je _inc_loop1
+        jmp _loop2
         
-    _if_greater:
-        mov r12, r11
-        mov r11, r15
-        mov r15, r12
+   
+    _inc_loop1:
+        mov r12, [r12 + 8]
+        jmp _loop1
+
+
+    _cmp:
+        mov r15, [r12]
+        mov r12, [r14]
+        mov r14, r15
         jmp _loop2
 
     _return:
-        pop r11
+        pop r15
+        pop r14
         pop r13
         pop r12
-        pop r15
-        ret
+
 
 
 
