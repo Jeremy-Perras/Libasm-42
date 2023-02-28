@@ -2,8 +2,8 @@ bits 64
 
 extern _ft_list_size
 section .text
-    global  _ft_list_sort ; rdi = **begin_list, rsi (*cmp)()
-    _ft_list_sort:
+    global  _ft_list_remove_if ; rdi = t_list **begin_list, rsi *data_ref, rdx =  (*cmp)(), rcx = *free_fct
+    _ft_list_remove_if:
         push r11
         push r12
         push r13
@@ -36,6 +36,8 @@ section .text
         pop rsi
         cmp rax, 0
         jg _cmp
+        cmp rax, 0
+        je _free
         mov r14, [r14 + 8]
         cmp r14, 0
         je _inc_loop1
@@ -57,6 +59,16 @@ section .text
         cmp r14, 0
         je _inc_loop1
         jmp _loop2
+    
+    _free
+        mov  r8, [r12 - 8]
+        mov  r9, [r12 + 8]
+        mov  r8, r9
+        push rdi
+        mov  rdi,r12
+        call rdx
+        pop rdi
+        mov r12,r9
 
     _return:
         pop r15
@@ -65,8 +77,6 @@ section .text
         pop r12
         pop r11
         ret 
-
-
 ;void ft_list_sort_test(t_list **begin_list, int(cmp)(void *, void *)) {
 ; t_list *tmp = *begin_list;
 ; t_list *tmp2;
