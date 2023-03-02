@@ -219,39 +219,43 @@ section .text
         call _ft_check_base
         pop rdi
         cmp rax, 1
-        jl _return
+        jl _error
        
         push rdi
         mov rdi, rsi
         call _ft_check_multiple
         pop rdi
         cmp rax, -1
-        je _return
+        je _error
        
         call _start_errors
         cmp rax, -1
-        je _return
+        je _error
         mov r13, rax
         call _get_result
-        cmp r9, 0
-        je  _is_even
-        cmp r9, 0
+       
+        cmp r9, 1
         je  _is_odd_
-      
-    _is_even:
-        inc r9
         jmp _return
 
     _is_odd_:
-        mov r9, -1
+        neg rax
         jmp _return
-    _return:
         
+    _error:
+        mov rax, 0
         pop r15
         pop r14
         pop r13
         pop r12
         pop r11
         pop r10
-        mul r9
+        ret
+    _return:  
+        pop r15
+        pop r14
+        pop r13
+        pop r12
+        pop r11
+        pop r10
         ret

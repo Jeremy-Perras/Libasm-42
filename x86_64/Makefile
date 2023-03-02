@@ -4,8 +4,10 @@ NAME_LIB = libasm.a
 NASM = nasm
 CC = gcc
 
-NASMFLAGS = -f macho64 -g -F dwarf 
-CFLAGS = -Wall -Wextra -fsanitize=address -Werror -g 
+NASMFLAGS = -f macho64 
+# -g -F dwarf for debug
+CFLAGS = -Wall -Wextra -fsanitize=address -Werror 
+# -g for debug 
 
 MKDIR = mkdir -p
 OUT_DIR := out
@@ -27,6 +29,10 @@ $(NAME) : $(OBJS)
 ccproject :
 	 $(CC) $(CFLAGS) main.c $(NAME_LIB) -o $(NAME)
 
+ccprojectbonus:
+	 $(CC) $(CFLAGS) main_bonus.c $(NAME_LIB) -o $(NAME)
+
+
 ccprojectM1 :
 	arch -x86_64 $(CC) $(CFLAGS) main.c $(NAME_LIB) -o $(NAME)
 
@@ -37,7 +43,8 @@ all : $(NAME)
 
 clean :
 	rm -rf $(OBJS)
-
+	rm -rf $(BONUS_OBJS)
+	
 fclean : clean
 	rm -f $(NAME_LIB)
 	rm -f $(NAME)

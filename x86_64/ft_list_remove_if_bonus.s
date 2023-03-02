@@ -56,7 +56,7 @@ section .text
         je _return
         jmp _find_previous_of_r12
 
-    _free
+    _free:
         mov r9, [r12 + 8]; tmp->next
         mov r8, r14; previous->next
         mov  [r8 + 8], r9
@@ -66,7 +66,7 @@ section .text
         pop  rdi
         jmp  _inc_loop1
 
-    _free_first_elem
+    _free_first_elem:
         mov  r9, [r12 + 8]; tmp->next
         push rdi
         mov  rdi, [r12]
