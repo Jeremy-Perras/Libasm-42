@@ -49,35 +49,36 @@ int lower(void *d1, void *d2) { return ((long long)d1 > (long long)d2); }
 void ft_list_remove_if(t_list **begin_list, void *data_ref, int (*cmp)(),
                        void (*free_fct)(void *));
 void removee(void *s) { *(char *)s = 'X'; };
+int ft_atoi_base(char *str, char *base);
 int main() {
-  t_list *test = NULL;
-  int i = 48;
+  // t_list *test = NULL;
+  // int i = 48;
   // int k = 123;
   // int l = 48;
   // int m = 83;
   // int n = 120;
 
-  ft_list_push_front(&test, (&i));
+  // ft_list_push_front(&test, (&i));
   // ft_list_push_front(&test, &k);
   // ft_list_push_front(&test, &l);
   // ft_list_push_front(&test, &m);
   // ft_list_push_front(&test, &n);
-  t_list *tmp = test;
-  while (test) {
-    int *c = test->data;
-    printf("%d\n", *c);
-    test = test->next;
-  }
-  test = tmp;
-  int j = 48;
-  ft_list_remove_if(&test, &j, &ft_strcmp, &removee);
-  printf("\n");
-  while (test) {
-    int *c = (int *)(test->data);
-    printf("%d\n", *c);
-    test = test->next;
-  }
-  printf("%lu", sizeof(void *));
+  // t_list *tmp = test;
+  // while (test) {
+  //   int *c = test->data;
+  //   printf("%d\n", *c);
+  //   test = test->next;
+  // }
+  // test = tmp;
+  // int j = 48;
+  // ft_list_remove_if(&test, &j, &ft_strcmp, &removee);
+  // printf("\n");
+  // while (test) {
+  //   int *c = (int *)(test->data);
+  //   printf("%d\n", *c);
+  //   test = test->next;
+  // }
+  // printf("%lu", sizeof(void *));
   // signal(SIGSEGV, sigsegv);
   // t_list *list = NULL;
   // ft_list_sort(&list, &lower);
@@ -100,7 +101,7 @@ int main() {
   // //   printf("%d", c);
   // //   tmp = tmp->next;
   // // }
-
+  printf("%d", ft_atoi_base("---1020", "0123"));
   return (1);
 }
 

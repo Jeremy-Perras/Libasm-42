@@ -79,4 +79,4 @@ int ft_atoi_base(char *str, char *base) {
   return (res * negative);
 }
 
-int main() { printf("%d", ft_atoi_base("150", "+0123456789abcdef")); }
+int main() { printf("%d", ft_atoi_base("1020", "0123")); }
