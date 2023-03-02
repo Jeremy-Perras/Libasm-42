@@ -74,7 +74,6 @@ section .text
         pop  rdi
         mov  r14, r9
         mov qword [r15], r9 ; r15 = *(&test) = NULL
-        mov qword r15, r9 ; r15 = (&test) = NULL
         jmp _inc_loop1
 
     _return:
