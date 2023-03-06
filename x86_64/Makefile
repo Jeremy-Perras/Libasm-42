@@ -7,9 +7,9 @@ CC = gcc
 
 NASMFLAGS = -f macho64 
 # -g -F dwarf for debug
-CFLAGS = -Wall -Wextra  -Werror 
-# -g -fsanitize=address for debug 
-
+CFLAGS = -Wall -Wextra -Werror -fsanitize=address  
+# -g for debug 
+# be careful with -fsanitize=address 
 MKDIR = mkdir -p
 OUT_DIR := out
 

@@ -59,8 +59,8 @@ int main() {
   }
   printf("\n---ATOI_BASE---\n");
   printf("%d\n", ft_atoi_base("+-1050", "0123"));
-  printf("%d\n", ft_atoi_base("+--1030", "0123"));
-  printf("%d\n", ft_atoi_base("           +-1020", "0123"));
+  printf("%d\n", ft_atoi_base("1", "0123"));
+  printf("%d\n", ft_atoi_base("f", "0123"));
   printf("%d\n", ft_atoi_base("dsf +-1050", "0123"));
   printf("%d\n", ft_atoi_base("16", "0123456789abcdef"));
   printf("%d\n", ft_atoi_base("48", "0123456789abcdef"));
